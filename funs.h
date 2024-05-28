@@ -4,10 +4,17 @@
 #include "complex.h"
 
 // BLAS FUNCTIONS
+
+// Level 1 BLAS
 extern float sdot_(const int *n, const float *x, const int *incx, const float *y, const int *incy);
 extern float complex cdotc_(const int *n, const float complex *x, const int *incx, const float complex *y, const int *incy);
 extern void  saxpy_(const int *n, const float *alpha, const float *x, const int *incx, float *y, const int *incy);
 extern void  caxpy_(const int *n, const float complex *alpha, const float complex *x, const int *incx, float complex *y, const int *incy);
+
+// Level 2 BLAS
+extern void dgemv_(char *trans, int *m, int *n, double *alpha, double *A, int *lda, double *x, int *incx, double *beta, double *y, int *incy);
+
+
 
 // LAPACK FUNCTIONS
 extern void sgesv_(int*, int*, float*, int*, int*, float*, int*, int*);
