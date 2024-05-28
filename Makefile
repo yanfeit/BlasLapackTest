@@ -16,6 +16,10 @@ saxpy:
 	$(CC) $(CFLAGS) $(LDFLAGS) -c test_saxpy.c -o test_saxpy.o
 	$(CC) $(CFLAGS) $(LDFLAGS) test_saxpy.o -o test_saxpy $(LD)
 
+caxpy:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_caxpy.c -o test_caxpy.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_caxpy.o -o test_caxpy $(LD)
+
 
 # LAPACK FUNCTIONS
 sgesv:
