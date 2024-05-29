@@ -25,6 +25,7 @@ extern void zgemm_(char* transA, char* transB, int* m, int* n, int* k, double co
 
 // LAPACK FUNCTIONS
 extern void sgesv_(int*, int*, float*, int*, int*, float*, int*, int*);
+extern void zgesv_(int* n, int* nrhs, double complex* A, int* lda, int* ipiv, double complex* B, int* ldb, int* info);
 extern void zgeev_(char*, char*, int*, double*, int*, double*, double*, int*, double*, int*, double*, int*, double*, int*);
 
 
