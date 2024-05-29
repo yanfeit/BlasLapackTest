@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -Wall
+CFLAGS=-g -Wall -I ../
 LDFLAGS=-L /opt/lapack/lib/
 LD=-llapack -lblas -lm -lgfortran
 
