@@ -13,6 +13,8 @@ extern void  caxpy_(const int *n, const float complex *alpha, const float comple
 
 // Level 2 BLAS
 extern void dgemv_(char *trans, int *m, int *n, double *alpha, double *A, int *lda, double *x, int *incx, double *beta, double *y, int *incy);
+extern void cgemv_(char *trans, int *m, int *n, float complex *alpha, float complex *A, int *lda, float complex *x, int *incx, float complex *beta, float complex *y, int *incy);
+extern void zgemv_(char *trans, int *m, int *n, double complex *alpha, double complex *A, int *lda, double complex *x, int *incx, double complex *beta, double complex *y, int *incy);
 
 
 
