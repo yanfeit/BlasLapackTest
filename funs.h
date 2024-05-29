@@ -18,6 +18,9 @@ extern void zgemv_(char *trans, int *m, int *n, double complex *alpha, double co
 extern void dtrsv_(char *uplo, char* trans, char* diag, int* n, double* A, int* lda, double* x, int* incx);
 extern void ztrsv_(char *uplo, char* trans, char* diag, int* n, double complex* A, int* lda, double complex* x, int* incx);
 
+// Level 3 BLAS
+extern void dgemm_(char* transA, char* transB, int* m, int* n, int* k, double* alpha, double* A, int* lda, double* B, int* ldb, double* beta, double* C, int* ldc);
+extern void zgemm_(char* transA, char* transB, int* m, int* n, int* k, double complex* alpha, double complex* A, int* lda, double complex* B, int* ldb, double complex* beta, double complex* C, int* ldc);
 
 
 // LAPACK FUNCTIONS

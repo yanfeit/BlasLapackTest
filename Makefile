@@ -51,6 +51,16 @@ ztrsv:
 	$(CC) $(CFLAGS) $(LDFLAGS) test_ztrsv.o -o test_ztrsv $(LD)
 	./test_ztrsv
 
+# LEVEL 3 BLAS
+dgemm:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_dgemm.c -o test_dgemm.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_dgemm.o -o test_dgemm $(LD)
+	./test_dgemm
+
+zgemm:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_zgemm.c -o test_zgemm.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_zgemm.o -o test_zgemm $(LD)
+	./test_zgemm
 
 # LAPACK FUNCTIONS
 sgesv:
@@ -75,3 +85,5 @@ clean:
 	rm -f test_zgemv
 	rm -f test_dtrsv
 	rm -f test_ztrsv
+	rm -f test_dgemm
+	rm -f test_zgemm
