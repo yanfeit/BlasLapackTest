@@ -41,6 +41,16 @@ zgemv:
 	$(CC) $(CFLAGS) $(LDFLAGS) test_zgemv.o -o test_zgemv $(LD)
 	./test_zgemv
 
+dtrsv:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_dtrsv.c -o test_dtrsv.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_dtrsv.o -o test_dtrsv $(LD)
+	./test_dtrsv
+
+ztrsv:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_ztrsv.c -o test_ztrsv.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_ztrsv.o -o test_ztrsv $(LD)
+	./test_ztrsv
+
 
 # LAPACK FUNCTIONS
 sgesv:
@@ -63,3 +73,5 @@ clean:
 	rm -f test_dgemv
 	rm -f test_cgemv
 	rm -f test_zgemv
+	rm -f test_dtrsv
+	rm -f test_ztrsv
