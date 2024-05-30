@@ -48,6 +48,10 @@ int main()
     {
         printf("(%e, %e)\n", creal(B[i]), cimag(B[i]));
     }
+    
+    printf("Details of factorization\n");
+
+    print_column_major_matrix(A, 4, 4);
 
     printf("Pivot indices: \n");
     for (int i = 0; i < n; i++)
