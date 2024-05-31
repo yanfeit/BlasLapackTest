@@ -1,77 +1,114 @@
-/* finding the eigenvalues of a complex matrix */
-
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <complex.h>
+#include <float.h>
+#include <math.h>
 #include "funs.h"
-#define size 3 /* dimension of matrix */
 
-struct complex
+
+// https://numericalalgorithmsgroup.github.io/LAPACK_Examples/examples/doc/zgeev_example.html
+// ZGEEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices
+
+
+void print_column_major_matrix(double* matrix, int m, int n)
 {
-    double re;
-    double im;
-}; /* a complex number */
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            // Access element using column-major indexing
+            int index = j * m + i;
+            printf("(%f+%f*I)   ", creal(matrix[index]), cimag(matrix[index]));
+        }
+        printf("\n"); // Move to the next line after each row
+    }
+}
+
 
 int main()
 {
-    struct complex A[3][3], b[3], DUMMY[1][1], WORK[6];
-    double AT[2 * size * size]; /* for transformed matrix */
-    int i, j, ok, c1, c2, c3;
-    char c4;
+    char jobvl='N';  // 'N': left eigenvectors of A are not computed.
+    char jobvr='V'; // 'V' : right eigenvectors of A are computed.
 
-    A[0][0].re = 3.1;
-    A[0][0].im = -1.8; /* the input matrix */
-    A[0][1].re = 1.3;
-    A[0][1].im = 0.2;
-    A[0][2].re = -5.7;
-    A[0][2].im = -4.3;
-    A[1][0].re = 1.0;
-    A[1][0].im = 0;
-    A[1][1].re = -6.9;
-    A[1][1].im = 3.2;
-    A[1][2].re = 5.8;
-    A[1][2].im = 2.2;
-    A[2][0].re = 3.4;
-    A[2][0].im = -4;
-    A[2][1].re = 7.2;
-    A[2][1].im = 2.9;
-    A[2][2].re = -8.8;
-    A[2][2].im = 3.2;
+    int n = 4;
+    double complex A[16] = {-3.97-5.04*I, 0.34-1.5*I, 3.31-3.85*I, -1.1+0.82*I,
+                            -4.11+3.7*I, 1.52-0.43*I, 2.5+3.45*I,   1.81-1.59*I,
+                            -0.34+1.01*I, 1.88-5.38*I, 0.88-1.08*I, 3.25+1.33*I,
+                            1.29-0.86*I, 3.36+0.65*I, 0.64-1.48*I, 1.57-3.44*I};  // on exit, A has been overwritten!
+    int lda = 4;
+    double complex w[4]; // w contains the complex eigenvalues
 
-    for (i = 0; i < size; i++) /* to call a Fortran routine from C we */
-    {                          /* have to transform the matrix */
-        for (j = 0; j < 2 * size; j++)
-        {
-            AT[2 * (j + size * i)] = A[j][i].re;
-            AT[2 * (j + size * i) + 1] = A[j][i].im;
-        }
-    }
+    complex double vl[4*4];  // left eigenvector , if jobvl='N' then not referenced.
+    int ldvl = 4;    // leading dimension of the array vl
 
-    c1 = size;     /* and put all numbers and characters */
-    c2 = 2 * size; /* we want to pass */
-    c3 = 1;        /* to the routine in variables */
-    c4 = 'N';
+    complex double vr[4*4]; // right eigenvector, 
+    int ldvr = 4;   // leading dimension of the array vr
 
-    /* find solution using LAPACK routine ZGEEV, all the arguments have to */
-    /* be pointers and you have to add an underscore to the routine name */
-    zgeev_(&c4, &c4, &c1, AT, &c1, b, DUMMY, &c3, DUMMY, &c3, WORK, &c2, WORK, &ok);
+    complex double work[8];
+    int lwork = 8;
+    double rwork[8];
 
-    /*
-     parameters in the order as they appear in the function call
-        no left eigenvectors, no right eigenvectors, order of input matrix A,
-        input matrix A, leading dimension of A, array for eigenvalues,
-        array for left eigenvalue, leading dimension of DUMMY,
-        array for right eigenvalues, leading dimension of DUMMY,
-        workspace array dim>=2*order of A, dimension of WORK
-        workspace array dim=2*order of A, return value */
+    int info;
 
-    if (ok == 0) /* output of eigenvalues */
+    zgeev_(&jobvl, &jobvr, &n, A, &lda, w, vl, &ldvl, vr, &ldvr, work, &lwork, rwork, &info);
+
+    if (info == 0)
     {
-        for (i = 0; i < size; i++)
-        {
-            printf("%f\t%f\n", b[i].re, b[i].im);
-        }
+        printf("successful exit!\n");
     }
-    else
-        printf("An error occured");
+    else{
+        printf("info : %d", info);
+    }
+
+    printf("\n");
+
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%dth Eigenvalue : (%f, %f)\n", i,  creal(w[i]), cimag(w[i]));
+        printf("\n");
+        printf("%dth Eigenvector : \n", i);
+
+        for (int j= 0; j < n; j++)
+        {
+            int idx = i*n+j;
+            printf("(%f, %f)\n", creal(vr[idx]), cimag(vr[idx]));
+        }
+
+    }
 
     return 0;
 }
+
+/*
+successful exit!
+
+0th Eigenvalue : (-6.000425, -6.999843)
+
+0th Eigenvector :
+(0.845722, 0.000000)
+(-0.017723, 0.303607)
+(0.087521, 0.311453)
+(-0.056147, -0.290598)
+1th Eigenvalue : (-5.000033, 2.006027)
+
+1th Eigenvector :
+(-0.386549, 0.173235)
+(-0.353929, 0.452881)
+(0.612370, 0.000000)
+(-0.085928, -0.328363)
+2th Eigenvalue : (7.998195, -0.996365)
+
+2th Eigenvector :
+(-0.172974, 0.266896)
+(0.692423, 0.000000)
+(0.332402, 0.495980)
+(0.250388, -0.014655)
+3th Eigenvalue : (3.002264, -3.999819)
+
+3th Eigenvector :
+(-0.035614, -0.178218)
+(0.126374, 0.266632)
+(0.012933, -0.296568)
+(0.889824, 0.000000)
+*/

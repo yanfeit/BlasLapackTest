@@ -14,12 +14,20 @@ zgesv:
 	$(CC) $(CFLAGS) $(LDFLAGS) test_zgesv.o -o test_zgesv $(LD)
 	./test_zgesv
 
+dgeev:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_dgeev.c -o test_dgeev.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_dgeev.o -o test_dgeev $(LD)
+	./test_dgeev
+
 zgeev:
 	$(CC) $(CFLAGS) $(LDFLAGS) -c test_zgeev.c -o test_zgeev.o
 	$(CC) $(CFLAGS) $(LDFLAGS) test_zgeev.o -o test_zgeev $(LD)
+	./test_zgeev
+
 
 clean:
 	rm -f *.o
 	rm -f test_sgesv
 	rm -f test_zgesv
+	rm -f test_dgeev
 	rm -f test_zgeev

@@ -4,7 +4,7 @@
 #include "funs.h"
 
 // Hypothetical declaration for a gemv function (not real)
-// C <--- alpha * op(A) * op(B) + beta * C, op(X) = X, X^T, X^H, C --- m*n
+// A * X = B
 
 
 void print_column_major_matrix(double complex *matrix, int m, int n)
