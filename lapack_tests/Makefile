@@ -24,6 +24,17 @@ zgeev:
 	$(CC) $(CFLAGS) $(LDFLAGS) test_zgeev.o -o test_zgeev $(LD)
 	./test_zgeev
 
+dgetrf:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_dgetrf.c -o test_dgetrf.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_dgetrf.o -o test_dgetrf $(LD)
+	./test_dgetrf
+
+dgetri:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_dgetri.c -o test_dgetri.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_dgetri.o -o test_dgetri $(LD)
+	./test_dgetri
+
+
 
 clean:
 	rm -f *.o
@@ -31,3 +42,6 @@ clean:
 	rm -f test_zgesv
 	rm -f test_dgeev
 	rm -f test_zgeev
+	rm -f test_dgetrf
+	rm -f test_dgetri
+

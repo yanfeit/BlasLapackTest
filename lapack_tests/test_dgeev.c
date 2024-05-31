@@ -11,20 +11,6 @@
 // DGEEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices
 
 
-void print_column_major_matrix(double* matrix, int m, int n)
-{
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            // Access element using column-major indexing
-            int index = j * m + i;
-            printf("(%f+%f*I)   ", creal(matrix[index]), cimag(matrix[index]));
-        }
-        printf("\n"); // Move to the next line after each row
-    }
-}
-
 
 int main()
 {
