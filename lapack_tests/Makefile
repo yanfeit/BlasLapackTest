@@ -35,6 +35,17 @@ dgetri:
 	./test_dgetri
 
 
+zgetrf:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_zgetrf.c -o test_zgetrf.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_zgetrf.o -o test_zgetrf $(LD)
+	./test_zgetrf
+
+
+zgetri:
+	$(CC) $(CFLAGS) $(LDFLAGS) -c test_zgetri.c -o test_zgetri.o
+	$(CC) $(CFLAGS) $(LDFLAGS) test_zgetri.o -o test_zgetri $(LD)
+	./test_zgetri
+
 
 clean:
 	rm -f *.o
@@ -44,4 +55,6 @@ clean:
 	rm -f test_zgeev
 	rm -f test_dgetrf
 	rm -f test_dgetri
+	rm -f test_zgetrf
+	rm -f test_zgetri
 

@@ -4,8 +4,6 @@
 #include "complex.h"
 
 // BLAS FUNCTIONS
-
-
 // Level 1 BLAS
 extern float sdot_(const int *n, const float *x, const int *incx, const float *y, const int *incy);
 extern float complex cdotc_(const int *n, const float complex *x, const int *incx, const float complex *y, const int *incy);
@@ -33,6 +31,7 @@ extern void dgeev_(char* jobvl, char* jobvr, int* n, double* A, int* lda, double
 extern void zgeev_(char* jobvl, char* jobvr, int* n, double complex* A, int* lda, double complex* w, double complex* vl, int* ldvl, double complex* vr, int* ldvr, double complex* work, int* lwork, double* rwork, int* info);
 extern void dgetrf_(int* m, int* n, double* A, int* lda, int* ipiv, int* info);
 extern void dgetri_(int* n, double* A, int* lda, int* ipiv, double* work, int* lwork, int* info);
-extern void sgetri_(int* n, float* A, int* lda, int* ipiv, float* work, int* lwork, int* info);
+extern void zgetrf_(int* m, int* n, double complex* A, int* lda, int* ipiv, int* info);
+extern void zgetri_(int* n, double complex* A, int* lda, int* ipiv, double complex* work, int* lwork, int* info);
 
 #endif

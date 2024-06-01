@@ -6,13 +6,11 @@
 #include "funs.h"
 
 // https://numericalalgorithmsgroup.github.io/LAPACK_Examples/examples/doc/dgetri_example.html
-// DGETRI computes the inverse of a matrix using the LU factorization
+// ZGETRI computes the inverse of a matrix using the LU factorization
 // computed by DGETRF.
 
 // This method inverts U and then computes inv(A) by solving the system
 // inv(A)*L = inv(U) for inv(A).
-// 
-
 
 void print_column_major_matrix(double* matrix, int m, int n)
 {
