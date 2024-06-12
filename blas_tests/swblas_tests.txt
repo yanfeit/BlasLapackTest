@@ -1,0 +1,105 @@
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_caxpy
+Job <25506> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+y after adding 2+3i times x to it: (1.000000, 1.000000) (1.000000, 9.000000) 
+Job 25506 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_cdotc
+Job <25507> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+The dot product of x and y is: (81.000000, -117.000000) 
+Job 25507 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_cgemv
+Job <25508> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+y[0] = (0.000000, 1.000000)
+y[1] = (1.000000, 2.000000)
+Job 25508 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dgemm
+Job <25509> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+C in one-dimension
+C[0] = 73.700000        C[1] = 163.700000       C[2] = 253.700000       C[3] = 82.400000        C[4] = 182.400000       C[5] = 282.400000        C[6] = 91.100000        C[7] = 201.100000       C[8] = 311.100000       C[9] = 99.800000        C[10] = 221.000000       C[11] = 342.200000
+73.700000 82.400000 91.100000 99.800000
+163.700000 182.400000 201.100000 221.000000
+253.700000 282.400000 311.100000 342.200000
+Job 25509 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dgemv
+Job <25510> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+y[0] = 0.000000
+y[1] = 0.000000
+Job 25510 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dtrsv
+Job <25511> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+AHTREAD-LIB:Assertion Failed at file:athread_num_threads.c line:44 
+::the new thread number 1 is more than the max thread number 0 can be started!
+Job 25511 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_saxpy
+Job <25512> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+y after adding 2x to it: 6.000000 9.000000 12.000000 
+Job 25512 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_sdot
+Job <25513> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+The dot product of x and y is: 70.000000
+Job 25513 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgemm
+Job <25514> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+C in one-dimension
+C[0] = (-11.300000 158.700000)
+C[1] = (33.700000 287.400000)
+C[2] = (33.700000 465.600000)
+C[3] = (4.900000 162.300000)
+C[4] = (62.400000 283.500000)
+C[5] = (79.400000 458.700000)
+C[6] = (20.350000 166.650000)
+C[7] = (90.100000 282.550000)
+C[8] = (123.400000 455.750000)
+C[9] = (34.050000 173.950000)
+C[10] = (113.750000 285.650000)
+C[11] = (161.050000 460.350000)
+
+(-11.300000+158.700000*I)   (4.900000+162.300000*I)   (20.350000+166.650000*I)   (34.050000+173.950000*I)
+(33.700000+287.400000*I)   (62.400000+283.500000*I)   (90.100000+282.550000*I)   (113.750000+285.650000*I)
+(33.700000+465.600000*I)   (79.400000+458.700000*I)   (123.400000+455.750000*I)   (161.050000+460.350000*I)
+Job 25514 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgemv
+Job <25515> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+y[0] = (0.000000, 1.000000)
+y[1] = (1.000000, 2.000000)
+Job 25515 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_ztrsv
+Job <25516> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+AHTREAD-LIB:Assertion Failed at file:athread_num_threads.c line:44 
+::the new thread number 1 is more than the max thread number 0 can be started!
+Job 25516 has been finished.
+
+
+06/12/2024:
+caxpy: Passed
+cdotc: Passed
+cgemv: Failed, it seems that code does not change the returned value.
+dgemm: Passed
+dgemv: Failed, it seems that code does not change the returned value.
+dtrsv: Failed, AHTREAD-LIB:Assertion Failed at file:athread_num_threads.c line:44 ::the new thread number 1 is more than the max thread number 0 can be started!
+saxpy: Passed
+sdot : Paseed
+zgemm: Passed
+zgemv: Failed, it seems that code does not change the returned value.
+ztrsv: Failed, AHTREAD-LIB:Assertion Failed at file:athread_num_threads.c line:44 ::the new thread number 1 is more than the max thread number 0 can be started!

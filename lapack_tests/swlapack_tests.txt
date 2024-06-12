@@ -1,0 +1,143 @@
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dgeev
+Job <25517> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+successful exit!
+
+0th Eigenvalue : (0.799482, 0.000000)
+0th Eigenvector :
+-0.655089
+-0.523629
+0.536218
+-0.095607
+1th Eigenvalue : (-0.099412, 0.400792)
+1th Eigenvector :
+(-0.193302, 0.254632)
+(0.251857, -0.522405)
+(0.097182, -0.308384)
+(0.675954, 0.000000)
+2th Eigenvalue : (-0.099412, -0.400792)
+2th Eigenvector :
+(-0.193302, -0.254632)
+(0.251857, 0.522405)
+(0.097182, 0.308384)
+(0.675954, -0.000000)
+3th Eigenvalue : (-0.100657, 0.000000)
+3th Eigenvector :
+0.125333
+0.332022
+0.593838
+0.722087
+Job 25517 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dgetrf
+Job <25518> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+successful exit!
+
+5.250000   -2.950000   -0.950000   -3.800000   
+0.342857   3.891429   2.375714   0.412857
+0.300952   -0.463118   -1.513859   0.294821
+-0.211429   -0.329883   0.004723   0.131373
+Job 25518 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_dgetri
+Job <25519> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+1.771998   0.575691   0.084325   4.815502   
+-0.117466   -0.445615   0.411363   -1.712581   
+0.179856   0.452662   -0.667565   1.482400
+2.494382   0.764977   -0.035954   7.611900
+Job 25519 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_sgesv
+Job <25520> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+1.000000e+00
+1.000000e+00
+1.000000e+00
+Job 25520 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgeev
+Job <25521> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+successful exit!
+
+0th Eigenvalue : (-6.000425, -6.999843)
+
+0th Eigenvector :
+(0.845722, 0.000000)
+(-0.017723, 0.303607)
+(0.087521, 0.311453)
+(-0.056147, -0.290598)
+1th Eigenvalue : (-5.000033, 2.006027)
+
+1th Eigenvector :
+(-0.386549, 0.173235)
+(-0.353929, 0.452881)
+(0.612370, 0.000000)
+(-0.085928, -0.328363)
+2th Eigenvalue : (7.998195, -0.996365)
+
+2th Eigenvector :
+(-0.172974, 0.266896)
+(0.692423, 0.000000)
+(0.332402, 0.495980)
+(0.250388, -0.014655)
+3th Eigenvalue : (3.002264, -3.999819)
+
+3th Eigenvector :
+(-0.035614, -0.178218)
+(0.126374, 0.266632)
+(0.012933, -0.296568)
+(0.889824, 0.000000)
+Job 25521 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgesv
+Job <25522> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+successful exit!
+(1.000000e+00, 1.000000e+00)
+(2.000000e+00, -3.000000e+00)
+(-4.000000e+00, -5.000000e+00)
+(-1.493038e-14, 6.000000e+00)
+Details of factorization
+(-3.290000+-2.390000*I)   (-1.910000+4.420000*I)   (-0.140000+-1.350000*I)   (1.720000+1.350000*I)
+(0.237612+0.255960*I)   (4.895181+-0.711362*I)   (-0.462280+1.696611*I)   (1.226853+0.618973*I)
+(-0.101952+-0.701014*I)   (-0.669150+0.368870*I)   (-5.141411+-1.129970*I)   (0.998258+0.385015*I)
+(-0.535855+0.270727*I)   (-0.204022+0.860118*I)   (0.008233+0.121064*I)   (0.148239+-0.125224*I)
+Pivot indices:
+3       2       3       4
+Job 25522 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgetrf
+Job <25523> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+successful exit!
+
+(-3.290000, -2.390000)  (-1.910000, 4.420000)  (-0.140000, -1.350000)  (1.720000, 1.350000)
+(0.237612, 0.255960)  (4.895181, -0.711362)  (-0.462280, 1.696611)  (1.226853, 0.618973)
+(-0.101952, -0.701014)  (-0.669150, 0.368870)  (-5.141411, -1.129970)  (0.998258, 0.385015)
+(-0.535855, 0.270727)  (-0.204022, 0.860118)  (0.008233, 0.121064)  (0.148239, -0.125224)
+Job 25523 has been finished.
+bsub -I -b -N 1 -q q_4 -cgsp 64 -cache_size 0 ./test_zgetri
+Job <25524> has been submitted to queue <q_4>
+waiting for dispatch ...
+dispatching ...
+(0.075662, -0.432358)  (1.651236, -3.134178)  (1.266317, 0.041789)  (3.818132, 1.119522)  
+(-0.194153, 0.079808)  (-1.189968, -0.142637)  (-0.240144, -0.588872)  (-0.010076, -1.496878)  
+(-0.095676, -0.049102)  (0.737108, -0.428972)  (0.322421, 0.077566)  (0.688745, 0.789104)
+(0.370184, -0.503968)  (3.725285, -3.181317)  (1.701354, 0.726729)  (3.936678, 3.325481)
+Job 25524 has been finished.
+
+
+06/12/2024:
+
+dgeev  : Passed
+dgetrf : Passed
+dgetri : Passed
+sgesv  : Passed
+zgeev  : Passed
+zgesv  : Passed
+zgetrf : Passed
+zgetri : Passed
